@@ -35,7 +35,7 @@ export default {
         }
       }
       return {
-        to: to
+        to: '/redirect' + to
       }
     }
   }
