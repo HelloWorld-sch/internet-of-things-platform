@@ -27,7 +27,9 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: '/',
+  // 构建输出目录
   outputDir: 'dist',
+  // 资源目录
   assetsDir: 'static',
   // ESLint语法检查
   lintOnSave: process.env.NODE_ENV === 'development',

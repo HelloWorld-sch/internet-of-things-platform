@@ -1,15 +1,16 @@
 import router from './router'
 import store from './store'
 import { Message } from 'element-ui'
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
-import { getToken } from '@/utils/auth' // get token from cookie
-import getPageTitle from '@/utils/get-page-title'
+import NProgress from 'nprogress' // 浏览器顶部的进度条
+import 'nprogress/nprogress.css' // 进度条样式
+import { getToken } from '@/utils/auth' // 从Cookie中获取token
+import getPageTitle from '@/utils/get-page-title' // 获取页面标题
 
-NProgress.configure({ showSpinner: false }) // NProgress Configuration
+NProgress.configure({ showSpinner: false }) // 进度条配置：不显示进度环
 
-const whiteList = ['/login'] // no redirect whitelist
+const whiteList = ['/login'] // 白名单，不需要token
 
+// 路由导航守卫
 router.beforeEach(async(to, from, next) => {
   // start progress bar
   NProgress.start()
@@ -58,6 +59,7 @@ router.beforeEach(async(to, from, next) => {
   }
 })
 
+// 路由导航守卫
 router.afterEach(() => {
   // finish progress bar
   NProgress.done()

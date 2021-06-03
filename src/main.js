@@ -1,19 +1,19 @@
 import Vue from 'vue'
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import 'normalize.css/normalize.css' // CSS重置的现代替代方案
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-// import locale from 'element-ui/lib/locale/lang/en' // lang i18n
+// import locale from 'element-ui/lib/locale/lang/en' // 国际化
 
-import '@/styles/index.scss' // global css
+import '@/styles/index.scss' // 全局样式
 
 import App from './App'
 import store from './store'
 import router from './router'
 
-import '@/icons' // icon
-import '@/permission' // permission control
+import '@/icons' // icon图标
+import '@/permission' // 权限控制
 
 /**
  * If you don't want to use mock-server
@@ -23,6 +23,7 @@ import '@/permission' // permission control
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
+// 生产环境使用MockJs，目前开发环境使用的是mock-server
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
