@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-
+// Cookie的设置
 const TokenKey = 'vue_admin_template_token'
 
 export function getToken() {

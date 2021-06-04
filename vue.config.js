@@ -41,8 +41,27 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    // 使用mock-server作为接口，去掉可以使用proxy作为远程接口访问地址
-    before: require('./mock/mock-server.js')
+    // 先测试mock-server接口，没有再使用远程接口
+    before: require('./mock/mock-server.js'),
+    // 解决跨域问题
+    proxy: {
+      // 测试前端自定义接口
+      [process.env.VUE_APP_BASE_API]: {
+        target: 'https://www.fastmock.site/mock/91e2431898ee745e701933d6e762c862/plat',
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      },
+      // 测试真实的接口
+      '/api': {
+        target: 'https://www.fastmock.site/mock/0aedbaff136c2dff1db89d926b54df17/admin',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

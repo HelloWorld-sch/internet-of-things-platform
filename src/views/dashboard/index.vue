@@ -5,14 +5,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { test } from '@/api/test'
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  data() {
+    return {
+      name: {}
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      test().then(response => {
+        this.name = response
+      })
+    }
   }
 }
 </script>

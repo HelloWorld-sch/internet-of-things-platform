@@ -9,7 +9,7 @@
   </el-breadcrumb>
 </template>
 
-<script>
+<script >
 import pathToRegexp from 'path-to-regexp'
 
 export default {

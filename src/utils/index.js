@@ -1,13 +1,10 @@
 /**
- * Created by PanJiaChen on 16/11/18.
- */
-
-/**
  * Parse the time to string
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string | null}
  */
+// 解析时间
 export function parseTime(time, cFormat) {
   if (arguments.length === 0 || !time) {
     return null
@@ -56,6 +53,7 @@ export function parseTime(time, cFormat) {
  * @param {string} option
  * @returns {string}
  */
+// 格式化时间
 export function formatTime(time, option) {
   if (('' + time).length === 10) {
     time = parseInt(time) * 1000
