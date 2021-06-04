@@ -31,6 +31,7 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
+  // 导航栏点击刷新
   {
     path: '/redirect',
     component: Layout,
@@ -42,19 +43,19 @@ export const constantRoutes = [
       }
     ]
   },
-
+  // 登录
   {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
-
+  // 404
   {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
   },
-
+  // 首页
   {
     path: '/',
     component: Layout,
@@ -66,61 +67,88 @@ export const constantRoutes = [
       meta: { title: '设备概览', icon: 'el-icon-odometer' }
     }]
   },
-
+  // 监测标准
   {
-    path: '/example',
+    path: '/standard',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
+    redirect: '/standard/type',
+    name: 'Standard',
     meta: { title: '监测标准', icon: 'el-icon-edit' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'type',
+        name: 'Type',
         component: () => import('@/views/table/index'),
         meta: { title: '监测类型' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
+        path: 'stateDefine',
+        name: 'StateDefine',
         component: () => import('@/views/tree/index'),
         meta: { title: '设备状态定义' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
+        path: 'orderDefine',
+        name: 'OrderDefine',
+        component: () => import('@/views/water/index'),
         meta: { title: '指令定义' }
       }
     ]
   },
-
+  // 固件库
   {
-    path: '/form',
+    path: '/firmware',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
+        name: 'Firmware',
         component: () => import('@/views/form/index'),
         meta: { title: '固件库', icon: 'firmware-library' }
       }
     ]
   },
-
+  // 设备管理
   {
-    path: '/nested',
+    path: '/manage',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Nested',
+        name: 'Manage',
         component: () => import('@/views/nested/menu2/index'),
         meta: { title: '设备管理', icon: 'nested' }
       }
     ]
   },
-
+  {
+    path: '/system',
+    component: Layout,
+    redirect: '/system/user',
+    name: 'System',
+    meta: { title: '系统管理', icon: 'el-icon-setting' },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/table/index'),
+        meta: { title: '用户管理' }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '角色管理' }
+      },
+      {
+        path: 'menu',
+        name: 'Menu',
+        component: () => import('@/views/water/index'),
+        meta: { title: '菜单管理' }
+      }
+    ]
+  },
+  // 跳转外网
   {
     path: 'external-link',
     component: Layout,
@@ -137,7 +165,7 @@ export const constantRoutes = [
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
